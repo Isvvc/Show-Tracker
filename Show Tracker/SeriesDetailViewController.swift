@@ -24,19 +24,5 @@ class SeriesDetailViewController: UIViewController {
     }
     
     private func updateViews() {
-        if let series = series {
-            toolbar.isHidden = true
-        } else {
-            toolbar.isHidden = false
-        }
-    }
-    
-    //MARK: Actions
-    
-    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
     }
 }

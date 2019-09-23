@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Series List View Controller-->
+        <!--Shows-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SeriesListViewController" customModule="Show_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="130-c9-vH2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SeriesCell" id="ybu-sG-yGy" customClass="SeriesTableViewCell" customModule="Show_Tracker" customModuleProvider="target">
@@ -43,7 +43,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="66Z-UP-xFU" id="tvo-1V-fJg"/>
-                                            <segue destination="D5r-GG-4bx" kind="show" identifier="ViewSeriesShowSegue" id="2GZ-Ya-meK"/>
+                                            <segue destination="D5r-GG-4bx" kind="show" identifier="ViewSeriesShowSegue" id="bVu-O0-Hl0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,10 +69,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YuX-Jx-J7p">
+                    <navigationItem key="navigationItem" title="Shows" id="YuX-Jx-J7p">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yqb-Nw-6oH">
                             <connections>
-                                <segue destination="D5r-GG-4bx" kind="presentation" id="CMQ-8M-HUL"/>
+                                <segue destination="D5r-GG-4bx" kind="show" identifier="NewSeriesShowSegue" id="CMQ-8M-HUL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
         </scene>
-        <!--Series Detail View Controller-->
+        <!--Show-->
         <scene sceneID="Nn0-sD-wip">
             <objects>
                 <viewController id="D5r-GG-4bx" customClass="SeriesDetailViewController" customModule="Show_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,46 +92,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mga-F3-hfU">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="mPW-8B-sme">
-                                        <connections>
-                                            <action selector="cancelTapped:" destination="D5r-GG-4bx" id="xcE-Nl-m5f"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ew2-vf-bP3"/>
-                                    <barButtonItem systemItem="done" id="6aT-2z-y3H">
-                                        <connections>
-                                            <action selector="doneTapped:" destination="D5r-GG-4bx" id="LeH-hn-0ZB"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0LM-it-kkj">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mga-F3-hfU" firstAttribute="trailing" secondItem="hLl-Kx-e7R" secondAttribute="trailing" id="Pd9-Yf-h1e"/>
-                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="bottom" secondItem="mga-F3-hfU" secondAttribute="bottom" id="QwK-UO-3tZ"/>
-                            <constraint firstItem="mga-F3-hfU" firstAttribute="leading" secondItem="hLl-Kx-e7R" secondAttribute="leading" id="pXd-9A-P1t"/>
+                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="trailing" secondItem="0LM-it-kkj" secondAttribute="trailing" id="9ZL-jy-hWk"/>
+                            <constraint firstItem="0LM-it-kkj" firstAttribute="top" secondItem="hLl-Kx-e7R" secondAttribute="top" id="IWS-6V-UYD"/>
+                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="bottom" secondItem="0LM-it-kkj" secondAttribute="bottom" id="OO3-op-XiA"/>
+                            <constraint firstItem="0LM-it-kkj" firstAttribute="top" secondItem="hLl-Kx-e7R" secondAttribute="top" id="lT8-X8-Spj"/>
+                            <constraint firstItem="0LM-it-kkj" firstAttribute="leading" secondItem="hLl-Kx-e7R" secondAttribute="leading" id="tDH-2E-1Uc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hLl-Kx-e7R"/>
                     </view>
-                    <connections>
-                        <outlet property="toolbar" destination="mga-F3-hfU" id="JTO-6J-UmP"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Show" id="Rb0-uz-uMg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XUb-No-QSm"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aX-qZ-McK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="138"/>
+            <point key="canvasLocation" x="1888" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dqp-oW-eit">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btV-ec-dPS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ntn-pW-x3d">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ntn-pW-x3d">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -145,6 +135,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2GZ-Ya-meK"/>
+        <segue reference="CMQ-8M-HUL"/>
     </inferredMetricsTieBreakers>
 </document>
