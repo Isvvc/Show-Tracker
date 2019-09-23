@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SeriesListViewController.swift
 //  Show Tracker
 //
 //  Created by Isaac Lyons on 9/23/19.
@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SeriesListViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
 }
 
+extension SeriesListViewController: UITableViewDataSource {
+    
+}
