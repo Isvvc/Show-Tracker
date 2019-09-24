@@ -104,13 +104,13 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         updateSeasons()
         
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
-        let episodes: [Int?] = []
+        //let episodes: [Int?] = []
         let episodeLength = 30
         
         if series != nil {
             
         } else {
-            let series = Series(name: name, episodesInExistingSeason: episodes, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
+            let series = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
             delegate?.seriesWasCreated(series: series)
         }
     }
