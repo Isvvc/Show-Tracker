@@ -91,7 +91,6 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             segue.identifier == "SeasonsShowSegue" {
             updateSeasons()
             seasonListVC.delegate = self
-            seasonListVC.delegate?.seasons = seasonsList
         }
     }
     
@@ -126,12 +125,5 @@ extension SeriesDetailViewController: SeasonListDelegate {
         get {
             return seasonsList
         }
-        set {
-             seasonsList = seasons
-        }
     }
-    
-//    func updateSeasons(seasons: [Int?]) {
-//        self.seasons = seasons
-//    }
 }

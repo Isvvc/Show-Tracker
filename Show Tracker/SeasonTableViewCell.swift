@@ -39,7 +39,6 @@ class SeasonTableViewCell: UITableViewCell {
             let number = Int(numberString) else { return }
         
         print("Setting Season \(row) to \(number).")
-        //delegate?.seasons[row] = number
         delegate?.setSeason(index: row, to: number)
     }
 }
