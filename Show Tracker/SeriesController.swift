@@ -17,6 +17,12 @@ class SeriesController {
         saveToPersistentStore()
     }
     
+    func edit(from oldSeries: Series, to newSeries: Series) {
+        guard let index = seriesList.firstIndex(of: oldSeries) else { return }
+        seriesList[index] = newSeries
+        saveToPersistentStore()
+    }
+    
     func saveToPersistentStore() {
         
     }

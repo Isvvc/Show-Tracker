@@ -39,8 +39,16 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SeriesDetailViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
         nameTextField.delegate = self
+        
+        if let series = series {
+            nameTextField.text = series.name
+            numberOfSeasonsStepper.value = Double(series.episodesInExistingSeason.count)
+            seasonsList = series.episodesInExistingSeason
+            viewerCurrentEpisodeTextField.text = String(series.viewerCurrentEpisode)
+            viewerCurrentSeasonStepper.value = Double(series.viewerCurrentSeason)
+            episodeLengthTextField.text = String(series.averageEpisodeLength)
+        }
         
         updateViews()
     }
@@ -108,11 +116,12 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
         
-        if series != nil {
-            
+        let newSeries = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
+        
+        if let series = self.series {
+            delegate?.seriesWasEdited(from: series, to: newSeries)
         } else {
-            let series = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
-            delegate?.seriesWasCreated(series: series)
+            delegate?.seriesWasCreated(series: newSeries)
         }
     }
 }

@@ -25,8 +25,6 @@ class SeriesListViewController: UIViewController {
             seriesDetailVC.delegate = self
             if segue.identifier == "ViewSeriesShowSegue",
                 let indexPath = tableView.indexPathForSelectedRow {
-                // Placeholder code to fill in a generic series
-                //seriesDetailVC.series = Series(name: "Houseki no Kuni", episodesInExistingSeason: [], averageEpisodeLength: 30, viewerCurrentSeason: 0, viewerCurrentEpisode: 0)
                 seriesDetailVC.series = seriesController.seriesList[indexPath.row]
             }
         }
@@ -43,11 +41,10 @@ extension SeriesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SeriesCell", for: indexPath) as? SeriesTableViewCell else { return UITableViewCell() }
-        // Placeholder code to fill in a generic series
-        //let series = Series(name: "Houseki no Kuni", episodesInExistingSeason: [], averageEpisodeLength: 30, viewerCurrentSeason: 0, viewerCurrentEpisode: 0)
-        let series = seriesController.seriesList[indexPath.row]
-        print(series.name)
-        cell.series = series
+        //let series = seriesController.seriesList[indexPath.row]
+        //cell.series = series
+        cell.seriesController = seriesController
+        cell.index = indexPath.row
         return cell
     }
 }
@@ -60,7 +57,7 @@ extension SeriesListViewController: SeriesDetailDelegate {
     }
     
     func seriesWasEdited(from oldSeries: Series, to newSeries: Series) {
-        
+        seriesController.edit(from: oldSeries, to: newSeries)
         navigationController?.popViewController(animated: true)
         tableView.reloadData()
     }

@@ -14,7 +14,7 @@ class SeasonTableViewCell: UITableViewCell {
     @IBOutlet weak var numberTextField: UITextField!
     
     var delegate: SeasonListDelegate?
-    var row: Int? {
+    var index: Int? {
         didSet {
             updateViews()
         }
@@ -25,20 +25,20 @@ class SeasonTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
-        if let row = row {
-            nameLabel.text = "Season \(row + 1)"
-            if let number = delegate?.seasons[row] {
+        if let index = index {
+            nameLabel.text = "Season \(index + 1)"
+            if let number = delegate?.seasons[index] {
                 numberTextField.text = String(number)
             }
         }
     }
 
     @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
-        guard let row = row,
+        guard let index = index,
             let numberString = numberTextField.text,
             let number = Int(numberString) else { return }
         
-        print("Setting Season \(row) to \(number).")
-        delegate?.setSeason(index: row, to: number)
+        print("Setting Season \(index) to \(number).")
+        delegate?.setSeason(index: index, to: number)
     }
 }

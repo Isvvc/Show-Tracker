@@ -39,7 +39,7 @@ class SeasonListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "seasonCell", for: indexPath) as? SeasonTableViewCell else { return UITableViewCell() }
 
         cell.delegate = delegate
-        cell.row = indexPath.row
+        cell.index = indexPath.row
 
         return cell
     }
