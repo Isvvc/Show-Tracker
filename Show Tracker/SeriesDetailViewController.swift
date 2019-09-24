@@ -29,6 +29,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     var series: Series?
     var delegate: SeriesDetailDelegate?
+    var seasons: [Int?] = []
     
     //MARK: View
 
@@ -47,12 +48,6 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    private func updateViews() {
-        numberOfSeasonsLabel.text = String(Int(numberOfSeasonsStepper.value))
-        viewerCurrentSeasonLabel.text = String(Int(viewerCurrentSeasonStepper.value))
-        dismissKeyboard()
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dismissKeyboard()
         return false
@@ -66,12 +61,48 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         updateViews()
     }
     
+    //MARK: Private
+    
+    private func updateViews() {
+        numberOfSeasonsLabel.text = String(Int(numberOfSeasonsStepper.value))
+        viewerCurrentSeasonLabel.text = String(Int(viewerCurrentSeasonStepper.value))
+        dismissKeyboard()
+    }
+    
+    private func updateSeasons() {
+        let numberOfSeasons = Int(numberOfSeasonsStepper.value)
+        if seasons.count > numberOfSeasons {
+            // Remove extra seasons off the end of the list
+            repeat {
+                seasons.removeLast()
+            } while seasons.count != numberOfSeasons
+        } else if seasons.count < numberOfSeasons {
+            // Add blank seasons to the end of the array
+            repeat {
+                seasons.append(nil)
+            } while seasons.count != numberOfSeasons
+        }
+    }
+    
+    //MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let seasonListVC = segue.destination as? SeasonListTableViewController,
+            segue.identifier == "SeasonsShowSegue" {
+            updateSeasons()
+            seasonListVC.delegate = self
+            seasonListVC.seasons = seasons
+        }
+    }
+    
     //MARK: Actions
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         guard let name = nameTextField.text,
             let viewerCurrentEpisodeString = viewerCurrentEpisodeTextField.text,
             let viewerCurrentEpisode = Int(viewerCurrentEpisodeString) else { return }
+        
+        updateSeasons()
         
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
         let episodes: [Int?] = []
@@ -83,5 +114,11 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             let series = Series(name: name, episodesInExistingSeason: episodes, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
             delegate?.seriesWasCreated(series: series)
         }
+    }
+}
+
+extension SeriesDetailViewController: SeasonListDelegate {
+    func updateSeasons(seasons: [Int?]) {
+        self.seasons = seasons
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		456C4804233A885100F50BD8 /* SeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4803233A885100F50BD8 /* SeriesController.swift */; };
+		456C4806233A8E0800F50BD8 /* SeasonListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4805233A8E0800F50BD8 /* SeasonListTableViewController.swift */; };
+		456C4808233A8E7700F50BD8 /* SeasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4807233A8E7700F50BD8 /* SeasonTableViewCell.swift */; };
 		45D5BA4223393D5300BB18D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5BA4123393D5300BB18D3 /* AppDelegate.swift */; };
 		45D5BA4423393D5300BB18D3 /* SeriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5BA4323393D5300BB18D3 /* SeriesListViewController.swift */; };
 		45D5BA4723393D5300BB18D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D5BA4523393D5300BB18D3 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		456C4803233A885100F50BD8 /* SeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesController.swift; sourceTree = "<group>"; };
+		456C4805233A8E0800F50BD8 /* SeasonListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListTableViewController.swift; sourceTree = "<group>"; };
+		456C4807233A8E7700F50BD8 /* SeasonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTableViewCell.swift; sourceTree = "<group>"; };
 		45D5BA3E23393D5200BB18D3 /* Show Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Show Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D5BA4123393D5300BB18D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45D5BA4323393D5300BB18D3 /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				45D5BA4323393D5300BB18D3 /* SeriesListViewController.swift */,
 				45D5BA59233943E100BB18D3 /* SeriesTableViewCell.swift */,
 				45D5BA5323393FCA00BB18D3 /* SeriesDetailViewController.swift */,
+				456C4805233A8E0800F50BD8 /* SeasonListTableViewController.swift */,
+				456C4807233A8E7700F50BD8 /* SeasonTableViewCell.swift */,
 				45D5BA552339405000BB18D3 /* Series.swift */,
 				456C4803233A885100F50BD8 /* SeriesController.swift */,
 				45D5BA4523393D5300BB18D3 /* Main.storyboard */,
@@ -147,7 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456C4808233A8E7700F50BD8 /* SeasonTableViewCell.swift in Sources */,
 				45D5BA4423393D5300BB18D3 /* SeriesListViewController.swift in Sources */,
+				456C4806233A8E0800F50BD8 /* SeasonListTableViewController.swift in Sources */,
 				45D5BA4223393D5300BB18D3 /* AppDelegate.swift in Sources */,
 				45D5BA5A233943E100BB18D3 /* SeriesTableViewCell.swift in Sources */,
 				45D5BA562339405000BB18D3 /* Series.swift in Sources */,

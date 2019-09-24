@@ -143,7 +143,7 @@
                                         <rect key="frame" x="0.0" y="103.5" width="374" height="30"/>
                                         <state key="normal" title="Enter number of episodes per season"/>
                                         <connections>
-                                            <segue destination="K3H-Lf-ycr" kind="show" id="dIu-01-f2a"/>
+                                            <segue destination="K3H-Lf-ycr" kind="show" identifier="SeasonsShowSegue" id="dIu-01-f2a"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am currently on episode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVZ-86-Tgo">
@@ -228,13 +228,13 @@
         <!--Number of episodes-->
         <scene sceneID="nPu-w8-Myk">
             <objects>
-                <tableViewController id="K3H-Lf-ycr" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esx-D4-VS0">
+                <tableViewController id="K3H-Lf-ycr" customClass="SeasonListTableViewController" customModule="Show_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esx-D4-VS0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Q26-qQ-woW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" id="Q26-qQ-woW" customClass="SeasonTableViewCell" customModule="Show_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q26-qQ-woW" id="igZ-U5-HJI">
@@ -247,10 +247,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nA-kI-QCs">
-                                            <rect key="frame" x="98.5" y="14.5" width="295.5" height="15"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="# of episodes" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nA-kI-QCs">
+                                            <rect key="frame" x="98.5" y="11.5" width="295.5" height="21"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                     </subviews>
@@ -295,6 +295,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EFB-aV-sp4"/>
+        <segue reference="b8o-au-e1c"/>
     </inferredMetricsTieBreakers>
 </document>
