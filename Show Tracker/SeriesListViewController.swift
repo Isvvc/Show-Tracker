@@ -27,6 +27,8 @@ class SeriesListViewController: UIViewController {
             }
         }
     }
+    
+    
 
 }
 

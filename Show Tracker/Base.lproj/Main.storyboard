@@ -35,15 +35,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c27-iX-m2x">
+                                                    <rect key="frame" x="300" y="7.5" width="94" height="29"/>
+                                                </stepper>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-Vb-39k">
+                                                    <rect key="frame" x="250" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="EUm-Vb-39k" firstAttribute="centerY" secondItem="glY-2y-eJE" secondAttribute="centerY" id="78b-t7-dzC"/>
+                                                <constraint firstItem="c27-iX-m2x" firstAttribute="centerY" secondItem="glY-2y-eJE" secondAttribute="centerY" id="BOz-N5-CqB"/>
                                                 <constraint firstItem="66Z-UP-xFU" firstAttribute="centerY" secondItem="glY-2y-eJE" secondAttribute="centerY" id="PAn-BZ-nPe"/>
+                                                <constraint firstAttribute="trailing" secondItem="c27-iX-m2x" secondAttribute="trailing" constant="20" id="QsS-FM-hOH"/>
                                                 <constraint firstItem="66Z-UP-xFU" firstAttribute="leading" secondItem="glY-2y-eJE" secondAttribute="leadingMargin" id="Uq8-wL-sjw"/>
+                                                <constraint firstItem="c27-iX-m2x" firstAttribute="leading" secondItem="EUm-Vb-39k" secondAttribute="trailing" constant="8" id="pLC-nM-1uS"/>
+                                                <constraint firstItem="EUm-Vb-39k" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="66Z-UP-xFU" secondAttribute="trailing" constant="8" id="rVf-qt-8wU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="66Z-UP-xFU" id="tvo-1V-fJg"/>
-                                            <segue destination="D5r-GG-4bx" kind="show" identifier="ViewSeriesShowSegue" id="bVu-O0-Hl0"/>
+                                            <segue destination="D5r-GG-4bx" kind="show" identifier="ViewSeriesShowSegue" id="b8o-au-e1c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -70,11 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shows" id="YuX-Jx-J7p">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yqb-Nw-6oH">
-                            <connections>
-                                <segue destination="D5r-GG-4bx" kind="show" identifier="NewSeriesShowSegue" id="CMQ-8M-HUL"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yqb-Nw-6oH"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="130-c9-vH2" id="XfP-3C-zNe"/>
@@ -92,28 +102,169 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0LM-it-kkj">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-F7-IL3">
+                                <rect key="frame" x="20" y="160" width="374" height="518"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Show title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6PN-mS-Hhz">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of seasons currently out:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cle-oO-ya2">
+                                        <rect key="frame" x="0.0" y="38" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ag5-ok-ABO">
+                                        <rect key="frame" x="0.0" y="66.5" width="374" height="29"/>
+                                        <subviews>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-Hb-CVC">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="numberOfSeasonsChanged:" destination="D5r-GG-4bx" eventType="valueChanged" id="ptZ-ON-EES"/>
+                                                </connections>
+                                            </stepper>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBt-3E-zIf">
+                                                <rect key="frame" x="103" y="0.0" width="271" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAc-OT-GuO">
+                                        <rect key="frame" x="0.0" y="103.5" width="374" height="30"/>
+                                        <state key="normal" title="Enter number of episodes per season"/>
+                                        <connections>
+                                            <segue destination="K3H-Lf-ycr" kind="show" id="dIu-01-f2a"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am currently on episode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVZ-86-Tgo">
+                                        <rect key="frame" x="0.0" y="141.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Episode number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hbr-dh-gzy">
+                                        <rect key="frame" x="0.0" y="170" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of season:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1N-9y-ekV">
+                                        <rect key="frame" x="0.0" y="208" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yam-io-EkC">
+                                        <rect key="frame" x="0.0" y="236.5" width="374" height="29"/>
+                                        <subviews>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="s59-AI-BHZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="viewerCurrentSeasonChanged:" destination="D5r-GG-4bx" eventType="valueChanged" id="ZDU-gn-vqj"/>
+                                                </connections>
+                                            </stepper>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7k-CD-jAT">
+                                                <rect key="frame" x="103" y="0.0" width="271" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next season comes out:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-WD-lOH">
+                                        <rect key="frame" x="0.0" y="273.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="jre-wP-cM2">
+                                        <rect key="frame" x="0.0" y="302" width="374" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="590959353.05099797">
+                                            <!--2019-09-23 19:22:33 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="trailing" secondItem="0LM-it-kkj" secondAttribute="trailing" id="9ZL-jy-hWk"/>
-                            <constraint firstItem="0LM-it-kkj" firstAttribute="top" secondItem="hLl-Kx-e7R" secondAttribute="top" id="IWS-6V-UYD"/>
-                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="bottom" secondItem="0LM-it-kkj" secondAttribute="bottom" id="OO3-op-XiA"/>
-                            <constraint firstItem="0LM-it-kkj" firstAttribute="top" secondItem="hLl-Kx-e7R" secondAttribute="top" id="lT8-X8-Spj"/>
-                            <constraint firstItem="0LM-it-kkj" firstAttribute="leading" secondItem="hLl-Kx-e7R" secondAttribute="leading" id="tDH-2E-1Uc"/>
+                            <constraint firstItem="hLl-Kx-e7R" firstAttribute="trailing" secondItem="o6D-F7-IL3" secondAttribute="trailing" constant="20" id="3ZD-pL-AvG"/>
+                            <constraint firstItem="o6D-F7-IL3" firstAttribute="top" secondItem="hLl-Kx-e7R" secondAttribute="top" constant="20" id="agQ-LW-2Jz"/>
+                            <constraint firstItem="o6D-F7-IL3" firstAttribute="leading" secondItem="hLl-Kx-e7R" secondAttribute="leading" constant="20" id="oE7-Ga-6I6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hLl-Kx-e7R"/>
                     </view>
                     <navigationItem key="navigationItem" title="Show" id="Rb0-uz-uMg">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="XUb-No-QSm"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="jre-wP-cM2" id="Fs6-o3-p13"/>
+                        <outlet property="nameTextField" destination="6PN-mS-Hhz" id="lal-gq-lOw"/>
+                        <outlet property="numberOfSeasonsLabel" destination="YBt-3E-zIf" id="eQ6-ll-kb6"/>
+                        <outlet property="numberOfSeasonsStepper" destination="YDI-Hb-CVC" id="qFd-eH-5Kb"/>
+                        <outlet property="viewerCurrentEpisodeTextField" destination="hbr-dh-gzy" id="bv5-GP-loF"/>
+                        <outlet property="viewerCurrentSeasonLabel" destination="d7k-CD-jAT" id="aHa-eP-mMc"/>
+                        <outlet property="viewerCurrentSeasonStepper" destination="s59-AI-BHZ" id="lCE-X0-FTc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aX-qZ-McK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888" y="138"/>
+            <point key="canvasLocation" x="1970" y="138"/>
+        </scene>
+        <!--Number of episodes-->
+        <scene sceneID="nPu-w8-Myk">
+            <objects>
+                <tableViewController id="K3H-Lf-ycr" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esx-D4-VS0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Q26-qQ-woW">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q26-qQ-woW" id="igZ-U5-HJI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIP-AB-Lek">
+                                            <rect key="frame" x="20" y="11.5" width="70.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nA-kI-QCs">
+                                            <rect key="frame" x="98.5" y="14.5" width="295.5" height="15"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8nA-kI-QCs" secondAttribute="trailing" id="5UH-r0-gn8"/>
+                                        <constraint firstItem="8nA-kI-QCs" firstAttribute="leading" secondItem="nIP-AB-Lek" secondAttribute="trailing" constant="8" id="BVv-84-ltQ"/>
+                                        <constraint firstItem="nIP-AB-Lek" firstAttribute="leading" secondItem="igZ-U5-HJI" secondAttribute="leadingMargin" id="JJg-JO-1Dm"/>
+                                        <constraint firstItem="8nA-kI-QCs" firstAttribute="centerY" secondItem="igZ-U5-HJI" secondAttribute="centerY" id="Jcc-xx-7vG"/>
+                                        <constraint firstItem="nIP-AB-Lek" firstAttribute="centerY" secondItem="igZ-U5-HJI" secondAttribute="centerY" id="ekb-Sp-T2K"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K3H-Lf-ycr" id="82r-dc-cU0"/>
+                            <outlet property="delegate" destination="K3H-Lf-ycr" id="N4c-6D-pLx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Number of episodes" id="JOb-RL-x3B"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgT-sM-UGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2849" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dqp-oW-eit">
@@ -134,7 +285,4 @@
             <point key="canvasLocation" x="243" y="138"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="CMQ-8M-HUL"/>
-    </inferredMetricsTieBreakers>
 </document>
