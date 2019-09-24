@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SeriesDetailDelegate {
+    func seriesWasCreated(series: Series)
+    func seriesWasEdited(from oldSeries: Series, to newSeries: Series)
+}
+
 class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Outlets
@@ -23,6 +28,9 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     //MARK: Properties
     
     var series: Series?
+    var delegate: SeriesDetailDelegate?
+    
+    //MARK: View
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,5 +64,24 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func viewerCurrentSeasonChanged(_ sender: UIStepper) {
         updateViews()
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        guard let name = nameTextField.text,
+            let viewerCurrentEpisodeString = viewerCurrentEpisodeTextField.text,
+            let viewerCurrentEpisode = Int(viewerCurrentEpisodeString) else { return }
+        
+        let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
+        let episodes: [Int?] = []
+        let episodeLength = 30
+        
+        if series != nil {
+            
+        } else {
+            let series = Series(name: name, episodesInExistingSeason: episodes, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
+            delegate?.seriesWasCreated(series: series)
+        }
     }
 }

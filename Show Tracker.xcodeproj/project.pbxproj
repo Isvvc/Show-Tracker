@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		456C4804233A885100F50BD8 /* SeriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4803233A885100F50BD8 /* SeriesController.swift */; };
 		45D5BA4223393D5300BB18D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5BA4123393D5300BB18D3 /* AppDelegate.swift */; };
 		45D5BA4423393D5300BB18D3 /* SeriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D5BA4323393D5300BB18D3 /* SeriesListViewController.swift */; };
 		45D5BA4723393D5300BB18D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D5BA4523393D5300BB18D3 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		456C4803233A885100F50BD8 /* SeriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesController.swift; sourceTree = "<group>"; };
 		45D5BA3E23393D5200BB18D3 /* Show Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Show Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D5BA4123393D5300BB18D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45D5BA4323393D5300BB18D3 /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				45D5BA59233943E100BB18D3 /* SeriesTableViewCell.swift */,
 				45D5BA5323393FCA00BB18D3 /* SeriesDetailViewController.swift */,
 				45D5BA552339405000BB18D3 /* Series.swift */,
+				456C4803233A885100F50BD8 /* SeriesController.swift */,
 				45D5BA4523393D5300BB18D3 /* Main.storyboard */,
 				45D5BA4823393D5500BB18D3 /* Assets.xcassets */,
 				45D5BA4A23393D5500BB18D3 /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 				45D5BA4223393D5300BB18D3 /* AppDelegate.swift in Sources */,
 				45D5BA5A233943E100BB18D3 /* SeriesTableViewCell.swift in Sources */,
 				45D5BA562339405000BB18D3 /* Series.swift in Sources */,
+				456C4804233A885100F50BD8 /* SeriesController.swift in Sources */,
 				45D5BA5423393FCA00BB18D3 /* SeriesDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

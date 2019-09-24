@@ -63,6 +63,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dOZ-GN-RXC"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="G0Q-na-3ot"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -84,7 +85,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shows" id="YuX-Jx-J7p">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yqb-Nw-6oH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yqb-Nw-6oH">
+                            <connections>
+                                <segue destination="D5r-GG-4bx" kind="show" identifier="NewSeriesShowSegue" id="EFB-aV-sp4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="130-c9-vH2" id="XfP-3C-zNe"/>
@@ -200,7 +205,11 @@
                         <viewLayoutGuide key="safeArea" id="hLl-Kx-e7R"/>
                     </view>
                     <navigationItem key="navigationItem" title="Show" id="Rb0-uz-uMg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XUb-No-QSm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XUb-No-QSm">
+                            <connections>
+                                <action selector="saveTapped:" destination="D5r-GG-4bx" id="KF9-ye-Vwf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="jre-wP-cM2" id="Fs6-o3-p13"/>
@@ -285,4 +294,7 @@
             <point key="canvasLocation" x="243" y="138"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EFB-aV-sp4"/>
+    </inferredMetricsTieBreakers>
 </document>
