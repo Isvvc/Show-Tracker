@@ -9,22 +9,18 @@
 import UIKit
 
 protocol SeasonListDelegate {
-    func updateSeasons(seasons: [Int?])
+    var seasons: [Int?] { get set }
+    //func updateSeasons(seasons: [Int?])
+    func setSeason(index seasonIndex: Int, to number: Int)
 }
 
 class SeasonListTableViewController: UITableViewController {
     
     var delegate: SeasonListDelegate?
-    var seasons: [Int?]?
+    //var seasons: [Int?]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -34,7 +30,7 @@ class SeasonListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let seasonCount = seasons?.count {
+        if let seasonCount = delegate?.seasons.count {
             return seasonCount
         } else {
             return 0
@@ -44,7 +40,8 @@ class SeasonListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "seasonCell", for: indexPath) as? SeasonTableViewCell else { return UITableViewCell() }
 
-        // Configure the cell...
+        cell.delegate = delegate
+        cell.row = indexPath.row
 
         return cell
     }

@@ -29,7 +29,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     var series: Series?
     var delegate: SeriesDetailDelegate?
-    var seasons: [Int?] = []
+    var seasonsList: [Int?] = []
     
     //MARK: View
 
@@ -71,16 +71,16 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     private func updateSeasons() {
         let numberOfSeasons = Int(numberOfSeasonsStepper.value)
-        if seasons.count > numberOfSeasons {
+        if seasonsList.count > numberOfSeasons {
             // Remove extra seasons off the end of the list
             repeat {
-                seasons.removeLast()
-            } while seasons.count != numberOfSeasons
-        } else if seasons.count < numberOfSeasons {
+                seasonsList.removeLast()
+            } while seasonsList.count != numberOfSeasons
+        } else if seasonsList.count < numberOfSeasons {
             // Add blank seasons to the end of the array
             repeat {
-                seasons.append(nil)
-            } while seasons.count != numberOfSeasons
+                seasonsList.append(nil)
+            } while seasonsList.count != numberOfSeasons
         }
     }
     
@@ -91,7 +91,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             segue.identifier == "SeasonsShowSegue" {
             updateSeasons()
             seasonListVC.delegate = self
-            seasonListVC.seasons = seasons
+            seasonListVC.delegate?.seasons = seasonsList
         }
     }
     
@@ -118,7 +118,20 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension SeriesDetailViewController: SeasonListDelegate {
-    func updateSeasons(seasons: [Int?]) {
-        self.seasons = seasons
+    func setSeason(index seasonIndex: Int, to number: Int) {
+        seasonsList[seasonIndex] = number
     }
+    
+    var seasons: [Int?] {
+        get {
+            return seasonsList
+        }
+        set {
+             seasonsList = seasons
+        }
+    }
+    
+//    func updateSeasons(seasons: [Int?]) {
+//        self.seasons = seasons
+//    }
 }

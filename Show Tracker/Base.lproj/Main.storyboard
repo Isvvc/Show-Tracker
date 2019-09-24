@@ -252,6 +252,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="textFieldDidEndEditing:" destination="Q26-qQ-woW" eventType="editingDidEnd" id="l8J-XY-y34"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -262,6 +265,10 @@
                                         <constraint firstItem="nIP-AB-Lek" firstAttribute="centerY" secondItem="igZ-U5-HJI" secondAttribute="centerY" id="ekb-Sp-T2K"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="nIP-AB-Lek" id="4F5-Lv-kBV"/>
+                                    <outlet property="numberTextField" destination="8nA-kI-QCs" id="2CX-LQ-HCS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
