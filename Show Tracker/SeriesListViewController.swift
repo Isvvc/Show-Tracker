@@ -23,7 +23,6 @@ class SeriesListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let seriesDetailVC = segue.destination as? SeriesDetailViewController {
             seriesDetailVC.delegate = self
-            
             if segue.identifier == "ViewSeriesShowSegue",
                 let indexPath = tableView.indexPathForSelectedRow {
                 // Placeholder code to fill in a generic series

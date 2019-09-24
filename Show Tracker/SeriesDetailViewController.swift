@@ -24,6 +24,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewerCurrentSeasonStepper: UIStepper!
     @IBOutlet weak var viewerCurrentSeasonLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var episodeLengthTextField: UITextField!
     
     //MARK: Properties
     
@@ -99,13 +100,13 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         guard let name = nameTextField.text,
             let viewerCurrentEpisodeString = viewerCurrentEpisodeTextField.text,
-            let viewerCurrentEpisode = Int(viewerCurrentEpisodeString) else { return }
+            let viewerCurrentEpisode = Int(viewerCurrentEpisodeString),
+            let episodeLengthString = episodeLengthTextField.text,
+            let episodeLength = Int(episodeLengthString) else { return }
         
         updateSeasons()
         
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
-        //let episodes: [Int?] = []
-        let episodeLength = 30
         
         if series != nil {
             
