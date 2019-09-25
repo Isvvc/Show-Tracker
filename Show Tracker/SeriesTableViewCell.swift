@@ -47,9 +47,13 @@ class SeriesTableViewCell: UITableViewCell {
         var i = 0
         for season in series.episodesInExistingSeason {
             if series.viewerCurrentSeason - 1 == i {
-                episodesToWatch += season - (series.viewerCurrentEpisode - 1)
+                if let number = season {
+                    episodesToWatch += number - (series.viewerCurrentEpisode - 1)
+                }
             } else if series.viewerCurrentSeason - 1 < i {
-                episodesToWatch += season
+                if let number = season {
+                    episodesToWatch += number
+                }
             }
             i += 1
         }
