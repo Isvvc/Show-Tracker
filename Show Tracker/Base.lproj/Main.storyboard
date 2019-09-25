@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jc3-3n-L7e">
-                                                    <rect key="frame" x="15" y="11" width="131" height="66.5"/>
+                                                    <rect key="frame" x="15" y="11" width="182" height="66.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66Z-UP-xFU">
                                                             <rect key="frame" x="0.0" y="0.0" width="92.5" height="20.5"/>
@@ -46,28 +46,31 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="I02-O4-ODt">
-                                                    <rect key="frame" x="201" y="11" width="104" height="57.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="I02-O4-ODt">
+                                                    <rect key="frame" x="205" y="11" width="100" height="57.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="On episode: 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-Vb-39k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="104" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="S1E1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-Vb-39k">
+                                                            <rect key="frame" x="64.5" y="0.0" width="35.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c27-iX-m2x">
-                                                            <rect key="frame" x="10" y="28.5" width="94" height="29"/>
+                                                            <rect key="frame" x="6" y="28.5" width="94" height="29"/>
                                                             <connections>
                                                                 <action selector="currentEpisodeChanged:" destination="ybu-sG-yGy" eventType="valueChanged" id="p9T-vO-m8d"/>
                                                             </connections>
                                                         </stepper>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="4ad-14-uWZ"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Jc3-3n-L7e" firstAttribute="top" secondItem="glY-2y-eJE" secondAttribute="topMargin" id="JII-iE-QIr"/>
                                                 <constraint firstItem="I02-O4-ODt" firstAttribute="top" secondItem="glY-2y-eJE" secondAttribute="topMargin" id="OaK-SQ-YiK"/>
-                                                <constraint firstItem="I02-O4-ODt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jc3-3n-L7e" secondAttribute="trailing" constant="8" id="dYV-gm-SEn"/>
+                                                <constraint firstItem="I02-O4-ODt" firstAttribute="leading" secondItem="Jc3-3n-L7e" secondAttribute="trailing" constant="8" id="UEd-a8-drZ"/>
                                                 <constraint firstItem="I02-O4-ODt" firstAttribute="trailing" secondItem="glY-2y-eJE" secondAttribute="trailingMargin" id="eym-bz-5CP"/>
                                                 <constraint firstItem="Jc3-3n-L7e" firstAttribute="leading" secondItem="glY-2y-eJE" secondAttribute="leadingMargin" id="kTf-F9-lUV"/>
                                             </constraints>

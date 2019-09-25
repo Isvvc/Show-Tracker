@@ -29,9 +29,6 @@ class SeriesListViewController: UIViewController {
             }
         }
     }
-    
-    
-
 }
 
 extension SeriesListViewController: UITableViewDataSource {
