@@ -23,6 +23,7 @@ class SeriesTableViewCell: UITableViewCell {
         didSet {
             guard let seriesController = seriesController else { return }
             currentEpisodeStepper.value = Double(seriesController.seriesList[index!].viewerCurrentEpisode)
+            currentEpisodeLabel.font = UIFont.monospacedDigitSystemFont(ofSize: currentEpisodeLabel!.font.pointSize, weight: .regular)
             updateViews()
         }
     }
@@ -40,7 +41,7 @@ class SeriesTableViewCell: UITableViewCell {
         let series = seriesController.seriesList[index]
         nameLabel.text = series.name
         
-        currentEpisodeLabel.text = "On episode: \(Int(currentEpisodeStepper.value))"
+        currentEpisodeLabel.text = "On: S\(series.viewerCurrentSeason)E\(Int(currentEpisodeStepper.value))"
         
         var episodesToWatch = 0
         var i = 0
