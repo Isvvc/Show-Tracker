@@ -29,6 +29,8 @@ class SeriesListViewController: UIViewController {
             }
         }
     }
+    
+    
 
 }
 
@@ -42,6 +44,13 @@ extension SeriesListViewController: UITableViewDataSource {
         cell.seriesController = seriesController
         cell.index = indexPath.row
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            seriesController.delete(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

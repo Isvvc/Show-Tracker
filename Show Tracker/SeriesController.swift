@@ -27,6 +27,11 @@ class SeriesController {
         saveToPersistentStore()
     }
     
+    func delete(at index: Int) {
+        seriesList.remove(at: index)
+        saveToPersistentStore()
+    }
+    
     var seriesListURL: URL? {
         let fileManager = FileManager.default
         guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
