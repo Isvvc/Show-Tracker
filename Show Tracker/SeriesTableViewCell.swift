@@ -18,6 +18,7 @@ class SeriesTableViewCell: UITableViewCell {
     @IBOutlet weak var currentEpisodeStepper: UIStepper!
     
     //MARK: Properties
+    
     var seriesController: SeriesController?
     var index: Int?{
         didSet {
@@ -27,12 +28,12 @@ class SeriesTableViewCell: UITableViewCell {
             updateViews()
         }
     }
-//    var series: Series? {
-//        didSet {
-//            currentEpisodeStepper.value = Double(series!.viewerCurrentEpisode)
-//            updateViews()
-//        }
-//    }
+
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter
+    }
     
     //MARK: Private
     private func updateViews() {
@@ -58,7 +59,8 @@ class SeriesTableViewCell: UITableViewCell {
             i += 1
         }
         let watchTime = Int(round(Double(episodesToWatch * series.averageEpisodeLength) / 60))
-        watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes by date."
+        let dateText = dateFormatter.string(from: series.nextSeasonDate)
+        watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes by \(dateText)."
     }
     
     @IBAction func currentEpisodeChanged(_ sender: UIStepper) {
