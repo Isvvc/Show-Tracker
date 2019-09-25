@@ -10,6 +10,10 @@ import Foundation
 
 class SeriesController {
     
+    init() {
+        loadFromPersistentStore()
+    }
+    
     var seriesList: [Series] = []
     
     func add(series: Series) {
@@ -23,7 +27,34 @@ class SeriesController {
         saveToPersistentStore()
     }
     
-    func saveToPersistentStore() {
+    var seriesListURL: URL? {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
+        return documents.appendingPathExtension("SeriesList.plist")
+    }
+    
+    func saveToPersistentStore() {
+        guard let url = seriesListURL else { return }
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let seriesData = try encoder.encode(seriesList)
+            try seriesData.write(to: url)
+        } catch {
+            print("Error saving series data: \(error)")
+        }
+    }
+    
+    func loadFromPersistentStore() {
+        do {
+            guard let url = seriesListURL else { return }
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            let decodedSeries = try decoder.decode([Series].self, from: data)
+            seriesList = decodedSeries
+        } catch {
+            print("Error loading series data: \(error)")
+        }
     }
 }
