@@ -168,7 +168,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-Hb-CVC">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-Hb-CVC">
                                                 <rect key="frame" x="186" y="0.0" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="numberOfSeasonsChanged:" destination="D5r-GG-4bx" eventType="valueChanged" id="ptZ-ON-EES"/>

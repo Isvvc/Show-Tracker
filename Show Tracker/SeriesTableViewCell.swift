@@ -41,16 +41,16 @@ class SeriesTableViewCell: UITableViewCell {
         let series = seriesController.seriesList[index]
         nameLabel.text = series.name
         
-        currentEpisodeLabel.text = "On: S\(series.viewerCurrentSeason)E\(Int(currentEpisodeStepper.value))"
+        currentEpisodeLabel.text = "On: S\(series.viewerCurrentSeason + 1)E\(Int(currentEpisodeStepper.value))"
         
         var episodesToWatch = 0
         var i = 0
         for season in series.episodesInExistingSeason {
-            if series.viewerCurrentSeason - 1 == i {
+            if series.viewerCurrentSeason == i {
                 if let number = season {
                     episodesToWatch += number - (series.viewerCurrentEpisode - 1)
                 }
-            } else if series.viewerCurrentSeason - 1 < i {
+            } else if series.viewerCurrentSeason < i {
                 if let number = season {
                     episodesToWatch += number
                 }
@@ -58,7 +58,7 @@ class SeriesTableViewCell: UITableViewCell {
             i += 1
         }
         let watchTime = Int(round(Double(episodesToWatch * series.averageEpisodeLength) / 60))
-        watchTimeLabel.text = "\(watchTime) hours to watch \(episodesToWatch) episodes by date."
+        watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes by date."
     }
     
     @IBAction func currentEpisodeChanged(_ sender: UIStepper) {

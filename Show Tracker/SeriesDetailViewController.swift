@@ -46,7 +46,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             numberOfSeasonsStepper.value = Double(series.episodesInExistingSeason.count)
             seasonsList = series.episodesInExistingSeason
             viewerCurrentEpisodeTextField.text = String(series.viewerCurrentEpisode)
-            viewerCurrentSeasonStepper.value = Double(series.viewerCurrentSeason)
+            viewerCurrentSeasonStepper.value = Double(series.viewerCurrentSeason + 1)
             episodeLengthTextField.text = String(series.averageEpisodeLength)
         }
         
@@ -74,6 +74,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     private func updateViews() {
         numberOfSeasonsLabel.text = String(Int(numberOfSeasonsStepper.value))
+        viewerCurrentSeasonStepper.maximumValue = numberOfSeasonsStepper.value
         viewerCurrentSeasonLabel.text = String(Int(viewerCurrentSeasonStepper.value))
         dismissKeyboard()
     }
@@ -93,6 +94,12 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private func showAlert(title: String,message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     //MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,11 +117,25 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             let viewerCurrentEpisodeString = viewerCurrentEpisodeTextField.text,
             let viewerCurrentEpisode = Int(viewerCurrentEpisodeString),
             let episodeLengthString = episodeLengthTextField.text,
-            let episodeLength = Int(episodeLengthString) else { return }
+            let episodeLength = Int(episodeLengthString) else {
+                showAlert(title: "Could not save show", message: "Please fill out all forms.")
+                return
+        }
         
         updateSeasons()
+        let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value) - 1
         
-        let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
+        guard let viewerCurrentSeasonEpisodes = seasonsList[viewerCurrentSeason] else {
+            showAlert(title: "Could not save show", message: "Current season has no episodes.")
+            return
+        }
+        
+        print(viewerCurrentEpisode)
+        print(viewerCurrentSeasonEpisodes)
+        guard viewerCurrentEpisode <= viewerCurrentSeasonEpisodes else {
+            showAlert(title: "Could not save show", message: "Current episode (\(viewerCurrentEpisode)) is greater than the total number of episodes in Season \(viewerCurrentSeason + 1) (\(viewerCurrentSeasonEpisodes))")
+            return
+        }
         
         let newSeries = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
         
