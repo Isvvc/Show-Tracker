@@ -29,8 +29,6 @@ class SeriesListViewController: UIViewController {
             }
         }
     }
-    
-    
 
 }
 
@@ -41,8 +39,6 @@ extension SeriesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SeriesCell", for: indexPath) as? SeriesTableViewCell else { return UITableViewCell() }
-        //let series = seriesController.seriesList[indexPath.row]
-        //cell.series = series
         cell.seriesController = seriesController
         cell.index = indexPath.row
         return cell

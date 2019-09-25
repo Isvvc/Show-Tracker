@@ -66,7 +66,6 @@ class SeriesTableViewCell: UITableViewCell {
     @IBAction func currentEpisodeChanged(_ sender: UIStepper) {
         guard let index = index,
             let seriesController = seriesController else { return }
-        //var series = seriesController.seriesList[index]
         seriesController.seriesList[index].viewerCurrentEpisode = Int(currentEpisodeStepper.value)
         updateViews()
     }
