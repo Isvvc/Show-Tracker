@@ -10,7 +10,7 @@ import Foundation
 
 struct Series: Equatable, Codable {
     var name: String
-    var episodesInExistingSeason: [Int?]
+    var episodesInExistingSeason: [Int]
     var averageEpisodeLength: Int
     var viewerCurrentSeason: Int
     var viewerCurrentEpisode: Int

@@ -113,10 +113,11 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             let episodeLength = Int(episodeLengthString) else { return }
         
         updateSeasons()
+        let unwrappedSeasons = seasonsList.compactMap { $0 }
         
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value)
         
-        let newSeries = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
+        let newSeries = Series(name: name, episodesInExistingSeason: unwrappedSeasons, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
         
         if let series = self.series {
             delegate?.seriesWasEdited(from: series, to: newSeries)
