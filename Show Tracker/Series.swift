@@ -14,4 +14,5 @@ struct Series: Equatable, Codable {
     var averageEpisodeLength: Int
     var viewerCurrentSeason: Int
     var viewerCurrentEpisode: Int
+    var nextSeasonDate: Date
 }

@@ -41,6 +41,9 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
         nameTextField.delegate = self
         
+        let today = NSDate()
+        datePicker.minimumDate = today as Date
+        
         if let series = series {
             nameTextField.text = series.name
             numberOfSeasonsStepper.value = Double(series.episodesInExistingSeason.count)
@@ -48,6 +51,9 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             viewerCurrentEpisodeTextField.text = String(series.viewerCurrentEpisode)
             viewerCurrentSeasonStepper.value = Double(series.viewerCurrentSeason + 1)
             episodeLengthTextField.text = String(series.averageEpisodeLength)
+            datePicker.date = series.nextSeasonDate
+        } else {
+            datePicker.date = today as Date
         }
         
         updateViews()
@@ -137,7 +143,12 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let newSeries = Series(name: name, episodesInExistingSeason: seasonsList, averageEpisodeLength: episodeLength, viewerCurrentSeason: viewerCurrentSeason, viewerCurrentEpisode: viewerCurrentEpisode)
+        let newSeries = Series(name: name,
+                               episodesInExistingSeason: seasonsList,
+                               averageEpisodeLength: episodeLength,
+                               viewerCurrentSeason: viewerCurrentSeason,
+                               viewerCurrentEpisode: viewerCurrentEpisode,
+                               nextSeasonDate: datePicker.date)
         
         if let series = self.series {
             delegate?.seriesWasEdited(from: series, to: newSeries)
