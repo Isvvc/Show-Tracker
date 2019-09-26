@@ -59,8 +59,12 @@ class SeriesTableViewCell: UITableViewCell {
             i += 1
         }
         let watchTime = Int(round(Double(episodesToWatch * series.averageEpisodeLength) / 60))
-        let dateText = dateFormatter.string(from: series.nextSeasonDate)
-        watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes by \(dateText)."
+        if let nextSeasonDate = series.nextSeasonDate {
+            let dateText = dateFormatter.string(from: nextSeasonDate)
+            watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes by \(dateText)."
+        } else {
+            watchTimeLabel.text = "About \(watchTime) hours to watch \(episodesToWatch) episodes."
+        }
     }
     
     @IBAction func currentEpisodeChanged(_ sender: UIStepper) {

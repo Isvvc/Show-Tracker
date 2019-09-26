@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-F7-IL3">
-                                <rect key="frame" x="20" y="131" width="280" height="499"/>
+                                <rect key="frame" x="20" y="131" width="280" height="508.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Show title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6PN-mS-Hhz">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -226,14 +226,26 @@
                                             </stepper>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next season comes out:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-WD-lOH">
-                                        <rect key="frame" x="0.0" y="254.5" width="280" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZOo-f3-2wh">
+                                        <rect key="frame" x="0.0" y="254.5" width="280" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next season:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-WD-lOH">
+                                                <rect key="frame" x="0.0" y="0.0" width="130.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-m3-xDc">
+                                                <rect key="frame" x="138.5" y="0.0" width="141.5" height="30"/>
+                                                <state key="normal" title="Unknown/none"/>
+                                                <connections>
+                                                    <action selector="noNextSeasonPressed:" destination="D5r-GG-4bx" eventType="touchUpInside" id="YTv-oL-Nm3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="jre-wP-cM2">
-                                        <rect key="frame" x="0.0" y="283" width="280" height="216"/>
+                                        <rect key="frame" x="0.0" y="292.5" width="280" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="590959353.05099797">
                                             <!--2019-09-23 19:22:33 +0000-->
                                         </date>
@@ -260,6 +272,7 @@
                         <outlet property="datePicker" destination="jre-wP-cM2" id="Fs6-o3-p13"/>
                         <outlet property="episodeLengthTextField" destination="sAm-DE-0Je" id="eT1-Y7-qPI"/>
                         <outlet property="nameTextField" destination="6PN-mS-Hhz" id="lal-gq-lOw"/>
+                        <outlet property="nextSeasonButton" destination="H6H-m3-xDc" id="RcD-i5-eXO"/>
                         <outlet property="numberOfSeasonsLabel" destination="YBt-3E-zIf" id="eQ6-ll-kb6"/>
                         <outlet property="numberOfSeasonsStepper" destination="YDI-Hb-CVC" id="qFd-eH-5Kb"/>
                         <outlet property="viewerCurrentEpisodeTextField" destination="hbr-dh-gzy" id="bv5-GP-loF"/>

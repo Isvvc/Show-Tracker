@@ -25,6 +25,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewerCurrentSeasonLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var episodeLengthTextField: UITextField!
+    @IBOutlet weak var nextSeasonButton: UIButton!
     
     //MARK: Properties
     
@@ -51,7 +52,15 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
             viewerCurrentEpisodeTextField.text = String(series.viewerCurrentEpisode)
             viewerCurrentSeasonStepper.value = Double(series.viewerCurrentSeason + 1)
             episodeLengthTextField.text = String(series.averageEpisodeLength)
-            datePicker.date = series.nextSeasonDate
+            if let _ = series.nextSeasonDate {
+                nextSeasonButton.isSelected = false
+            } else {
+                nextSeasonButton.isSelected = true
+            }
+        }
+        
+        if let unwrappedDate = series?.nextSeasonDate {
+            datePicker.date = unwrappedDate
         } else {
             datePicker.date = today as Date
         }
@@ -82,6 +91,7 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
         numberOfSeasonsLabel.text = String(Int(numberOfSeasonsStepper.value))
         viewerCurrentSeasonStepper.maximumValue = numberOfSeasonsStepper.value
         viewerCurrentSeasonLabel.text = String(Int(viewerCurrentSeasonStepper.value))
+        datePicker.isHidden = nextSeasonButton.isSelected
         dismissKeyboard()
     }
     
@@ -118,7 +128,13 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Actions
     
+    @IBAction func noNextSeasonPressed(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        updateViews()
+    }
+    
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        // Ensure all text entries are valid numbers
         guard let name = nameTextField.text,
             let viewerCurrentEpisodeString = viewerCurrentEpisodeTextField.text,
             let viewerCurrentEpisode = Int(viewerCurrentEpisodeString),
@@ -128,28 +144,39 @@ class SeriesDetailViewController: UIViewController, UITextFieldDelegate {
                 return
         }
         
+        // Set the current season
         updateSeasons()
         let viewerCurrentSeason = Int(viewerCurrentSeasonStepper.value) - 1
         
+        // Ensure viewer's current season has episodes
         guard let viewerCurrentSeasonEpisodes = seasonsList[viewerCurrentSeason] else {
             showAlert(title: "Could not save show", message: "Current season has no episodes.")
             return
         }
         
-        print(viewerCurrentEpisode)
-        print(viewerCurrentSeasonEpisodes)
+        // Ensure the user didn't enter an episode number greater than the number of episodes in the season
         guard viewerCurrentEpisode <= viewerCurrentSeasonEpisodes else {
             showAlert(title: "Could not save show", message: "Current episode (\(viewerCurrentEpisode)) is greater than the total number of episodes in Season \(viewerCurrentSeason + 1) (\(viewerCurrentSeasonEpisodes))")
             return
         }
         
+        // Check if date is given
+        let date: Date?
+        if nextSeasonButton.isSelected {
+            date = nil
+        } else {
+            date = datePicker.date
+        }
+        
+        // Create the new series
         let newSeries = Series(name: name,
                                episodesInExistingSeason: seasonsList,
                                averageEpisodeLength: episodeLength,
                                viewerCurrentSeason: viewerCurrentSeason,
                                viewerCurrentEpisode: viewerCurrentEpisode,
-                               nextSeasonDate: datePicker.date)
+                               nextSeasonDate: date)
         
+        // Pass the new series to the delegate
         if let series = self.series {
             delegate?.seriesWasEdited(from: series, to: newSeries)
         } else {
