@@ -241,6 +241,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-m3-xDc">
                                                 <rect key="frame" x="138.5" y="0.0" width="141.5" height="30"/>
                                                 <state key="normal" title="Unknown/none"/>
+                                                <connections>
+                                                    <action selector="noNextSeasonPressed:" destination="D5r-GG-4bx" eventType="touchUpInside" id="ISv-aa-vtp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -272,6 +275,7 @@
                         <outlet property="datePicker" destination="jre-wP-cM2" id="Fs6-o3-p13"/>
                         <outlet property="episodeLengthTextField" destination="sAm-DE-0Je" id="eT1-Y7-qPI"/>
                         <outlet property="nameTextField" destination="6PN-mS-Hhz" id="lal-gq-lOw"/>
+                        <outlet property="nextSeasonButton" destination="H6H-m3-xDc" id="UC8-rs-rKK"/>
                         <outlet property="numberOfSeasonsLabel" destination="YBt-3E-zIf" id="eQ6-ll-kb6"/>
                         <outlet property="numberOfSeasonsStepper" destination="YDI-Hb-CVC" id="qFd-eH-5Kb"/>
                         <outlet property="viewerCurrentEpisodeTextField" destination="hbr-dh-gzy" id="bv5-GP-loF"/>
