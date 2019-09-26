@@ -206,14 +206,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yam-io-EkC">
                                         <rect key="frame" x="0.0" y="217.5" width="280" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="of season:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1N-9y-ekV">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of season:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1N-9y-ekV">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7k-CD-jAT">
-                                                <rect key="frame" x="169" y="0.0" width="8" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7k-CD-jAT">
+                                                <rect key="frame" x="147" y="0.0" width="30" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="QN3-uN-XgR"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -238,9 +241,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6H-m3-xDc">
                                                 <rect key="frame" x="138.5" y="0.0" width="141.5" height="30"/>
                                                 <state key="normal" title="Unknown/none"/>
-                                                <connections>
-                                                    <action selector="noNextSeasonPressed:" destination="D5r-GG-4bx" eventType="touchUpInside" id="YTv-oL-Nm3"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -272,7 +272,6 @@
                         <outlet property="datePicker" destination="jre-wP-cM2" id="Fs6-o3-p13"/>
                         <outlet property="episodeLengthTextField" destination="sAm-DE-0Je" id="eT1-Y7-qPI"/>
                         <outlet property="nameTextField" destination="6PN-mS-Hhz" id="lal-gq-lOw"/>
-                        <outlet property="nextSeasonButton" destination="H6H-m3-xDc" id="RcD-i5-eXO"/>
                         <outlet property="numberOfSeasonsLabel" destination="YBt-3E-zIf" id="eQ6-ll-kb6"/>
                         <outlet property="numberOfSeasonsStepper" destination="YDI-Hb-CVC" id="qFd-eH-5Kb"/>
                         <outlet property="viewerCurrentEpisodeTextField" destination="hbr-dh-gzy" id="bv5-GP-loF"/>
